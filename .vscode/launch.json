@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-EventmanagementApplication<eventmanagement>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.kai_deas.eventmanagement.EventmanagementApplication",
+            "projectName": "eventmanagement",
+            "args": ""
+        }
+    ]
+}
