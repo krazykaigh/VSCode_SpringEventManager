@@ -1,9 +1,12 @@
 package com.kai_deas.eventmanagement.entities;
 
+import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+@Entity
 public class Organizer extends AbstractEntity {
 
     private String name;
@@ -24,6 +27,16 @@ public class Organizer extends AbstractEntity {
 
     public void setEvent(Set<Event> event) {
         this.event = event;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(id, ((Organizer) obj).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
 }
