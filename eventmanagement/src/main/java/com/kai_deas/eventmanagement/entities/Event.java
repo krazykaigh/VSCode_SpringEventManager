@@ -2,17 +2,29 @@ package com.kai_deas.eventmanagement.entities;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Set;
 
-public class Event extends AbstractEntity{
-    
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+public class Event extends AbstractEntity {
+
     private String name;
     private String description;
     private ZonedDateTime startTime;
     private ZonedDateTime endTime;
     private ZoneId zoneId;
     private Boolean started;
-    // provate organizer 
-
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(nullable = false)
+    private Organizer organizer;
+    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Participant> participants;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Venue venue;
 
     public String getName() {
         return this.name;
@@ -64,6 +76,30 @@ public class Event extends AbstractEntity{
 
     public void setStarted(Boolean started) {
         this.started = started;
+    }
+
+    public Organizer getOrganizer() {
+        return this.organizer;
+    }
+
+    public void setOrganizer(Organizer organizer) {
+        this.organizer = organizer;
+    }
+
+    public Set<Participant> getParticipants() {
+        return this.participants;
+    }
+
+    public void setParticipants(Set<Participant> participants) {
+        this.participants = participants;
+    }
+
+    public Venue getVenue() {
+        return this.venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 
 }
