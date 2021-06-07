@@ -23,11 +23,14 @@ public class Event extends AbstractEntity {
     private ZonedDateTime endTime;
     private ZoneId zoneId;
     private Boolean started;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
     private Organizer organizer;
+
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Participant> participants;
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @RestResource(exported = false)
     private Venue venue;
