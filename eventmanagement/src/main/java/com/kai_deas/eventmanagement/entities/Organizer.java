@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 public class Organizer extends AbstractEntity {
 
     private String name;
+
     @OneToMany(mappedBy = "organizer")
     private Set<Event> event;
 
@@ -38,5 +39,10 @@ public class Organizer extends AbstractEntity {
     public int hashCode() {
         return Objects.hash(id);
     }
+    // Undocumented code from Udemy Course
+    public Long getResourceId() {
+    return this.id;
+}
+
 
 }
