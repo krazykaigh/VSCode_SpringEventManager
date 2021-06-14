@@ -23,7 +23,7 @@ public class Event extends AbstractEntity {
     private Boolean started;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "organizer_id", nullable = false)
+    @JoinColumn(nullable = false)
     private Organizer organizer;
 
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
